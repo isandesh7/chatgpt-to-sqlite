@@ -16,7 +16,7 @@ def concatenate_rows(message: dict, chat_id: str) -> Optional[dict]:
     # sender (user, assistant, and system)
     sender = message["author"]["role"] if message["author"] else "unknown"
 
-    if "parts" not in message["content"]:
+    if "parts" not in message["content"] or not message["content"]["parts"]:
         return None
 
     metadata = message.get("metadata", {})
